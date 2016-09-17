@@ -12,7 +12,7 @@ class RootController {
     this.hackerService = hackerService
     this.searchTerm = ''
   }
-  
+
 
   loginToGithub() {
     console.log('awesome')
@@ -40,7 +40,11 @@ class RootController {
   }
 
   search() {
-    this.hackerService.getGithubHackers(this.searchTerm).then(data => this.users = data.items);
+    let city = this.searchTerm.match(/Zurich/) ? 'Zurich' : 'Basel'
+    let language = this.searchTerm.match(/python/) ? 'python' : 'javascript'
+    this.hackerService
+      .getGithubHackers(language, city)
+      .then(data => this.users = data.items)
   }
 
   openCreateDialog(evt) {
