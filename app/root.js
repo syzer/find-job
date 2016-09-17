@@ -17,7 +17,6 @@ class RootController {
   //TODO remove :)
   nope() {
     console.log('nope')
-    sentimentService.getSentiment('bla bla').then(console.log).catch(console.error)
     return true
   }
 
@@ -66,7 +65,7 @@ class RootController {
   }
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService', 'sentimentService']
 
 const rootComponent = {
   controller: RootController,
