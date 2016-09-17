@@ -1,0 +1,53 @@
+<div layout="column" style="width: 100%;">
+  <md-toolbar flex="none">
+    <div class="md-toolbar-tools">
+        <span class="md-title">
+          Messages
+        </span>
+    </div>
+  </md-toolbar>
+  <div flex layout="column">
+    <div style="margin: auto; align-self: center"
+         ng-show="$ctrl.loadingMessages">
+      <md-progress-circular ng-disabled="!$ctrl.loadingMessages">
+      </md-progress-circular>
+    </div>
+    <md-content ng-hide="$ctrl.loadingMessages || $ctrl.errorMessage" flex
+                layout="row">
+      <md-list flex>
+        <md-list-item ng-repeat="message in $ctrl.messages">
+          <img class="md-avatar" ng-src="{{message.img}}">
+          <div class="md-list-item-text">
+            <p>{{message.text}}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+    <div ng-show="$ctrl.errorMessage"
+         class="md-whiteframe-z1"
+         style="align-self: center; margin: auto;
+                background-color: #D50000;
+                color: #FFF;
+                border-radius: 2px; padding: 8px;">
+      <h3>
+        <md-icon style="color: #FFF" class="material-icons">
+          error
+        </md-icon>
+        Error
+      </h3>
+      <p>{{$ctrl.errorMessage}}</p>
+    </div>
+    <form ng-hide="$ctrl.loadingMessages || $ctrl.errorMessage"
+          layout="row" flex="none"
+          style="padding: 8px;">
+      <md-input-container flex>
+        <input placeholder="Send a message..." ng-model="$ctrl.inputMessage">
+      </md-input-container>
+      <md-button class="md-fab" type="submit" ng-click="$ctrl.submitMessage()">
+        <md-icon class="material-icons">
+          send
+        </md-icon>
+      </md-button>
+    </form>
+  </div>
+</div>

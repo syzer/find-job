@@ -1,0 +1,73 @@
+<md-dialog style="width: 80%;">
+  <form name="createForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Inform us!</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+          <md-icon class="material-icons">
+            cancel
+          </md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column">
+        <md-input-container>
+          <label>Title</label>
+          <input ng-model="$ctrl.title" required name="title"
+                 ng-maxlength="100" ng-minlength="10">
+          <div ng-messages="createForm.title.$error">
+            <div ng-message="required">
+              A title is required.
+            </div>
+            <div ng-message="minlength">
+              Write at least 10 characters.
+            </div>
+            <div ng-message="maxlength">
+              Title is too long.
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container>
+          <label>Description</label>
+          <textarea ng-model="$ctrl.description" required name="description"
+                    ng-minlength="50" style="max-height: 120px;">
+            </textarea>
+        </md-input-container>
+        <md-input-container>
+          <label>Link</label>
+          <input ng-model="$ctrl.link" name="link">
+        </md-input-container>
+        <md-input-container>
+          <label>Country</label>
+          <md-select required ng-model="$ctrl.country">
+            <md-option ng-repeat="country in $ctrl.countryList" ng-value="country">
+              {{country}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container>
+          <label>City</label>
+          <md-select ng-model="$ctrl.city" required
+                     ng-disabled="!$ctrl.country">
+            <md-option ng-repeat="city in $ctrl.cities" ng-value="city">
+              {{city}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end stretch">
+      <md-button ng-click="$ctrl.cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-disabled="createForm.$invalid"
+                 type="submit"
+                 ng-click="$ctrl.create()"
+                 class="md-primary">
+        Create
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
