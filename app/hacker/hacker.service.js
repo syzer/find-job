@@ -82,17 +82,9 @@ class HackerService {
   getGithubHackers(language = 'python', location = 'Zurich') {
     return this.$http({
       method: 'GET',
-      url: `https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`
-    }).then(httpData => httpData.data)
-      .then(data => {
-        return this.analyze(data)
-      })
-      .catch(console.warn)
-  }
-
-  analyze(data) {
-    console.log('analyze working')
-    return data
+      //TODO
+      url: 'https://1ae3d400.ngrok.io/github'
+    }).then(httpData => httpData.data).catch(console.warn)
   }
 
 }
