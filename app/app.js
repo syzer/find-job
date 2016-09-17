@@ -13,19 +13,19 @@ import MessageService from './messages/messages.service.js';
 import rumorComponent from './rumors/rumors.component.js';
 import RumorService from './rumors/rumors.service.js';
 
-require('angular-material/angular-material.css');
+require('angular-material/angular-material.css')
 
-angular.module('myanmarApp', [
+angular.module('findJob', [
   ngCookies, ngResource, ngSanitize, ngAnimate, ngMaterial, ngMessages
 ]).component('root', rootComponent)
     .component('messages', messagesComponent)
     .component('rumors', rumorComponent)
     .service('messageService', MessageService)
-    .service('rumorService', RumorService);
+    .service('rumorService', RumorService)
 
 angular.element(document)
     .ready(() => {
-      angular.bootstrap(document, ['myanmarApp'], {
+      angular.bootstrap(document, ['findJob'], {
         strictDi: true
-      });
-    });
+      })
+    })

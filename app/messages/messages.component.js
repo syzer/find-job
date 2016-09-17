@@ -1,19 +1,19 @@
-const template = require('./messages.html');
+const template = require('./messages.html')
 
 
 class MessageController {
   constructor(messageService) {
-    this.messageService = messageService;
-    this.messages = [];
+    this.messageService = messageService
+    this.messages = []
     this.loadingMessages = true;
-    this.inputMessage = null;
+    this.inputMessage = null
     this.messageService.getMessages().then((messages) => {
-      this.messages = messages.reverse();
-      this.loadingMessages = false;
+      this.messages = messages.reverse()
+      this.loadingMessages = false
     }).catch(() => {
-      this.errorMessage = 'Something went wrong...';
-      this.loadingMessages = false;
-    });
+      this.errorMessage = 'Something went wrong...'
+      this.loadingMessages = false
+    })
   }
 
   submitMessage() {
@@ -21,14 +21,14 @@ class MessageController {
       img: this.messages[0].img,
       text: this.inputMessage
     }, ...this.messages];
-    this.inputMessage = '';
+    this.inputMessage = ''
   }
 }
-MessageController.$inject = ['messageService'];
+MessageController.$inject = ['messageService']
 
 
 const messagesComponent = {
   controller: MessageController,
   template
-};
-export default messagesComponent;
+}
+export default messagesComponent
