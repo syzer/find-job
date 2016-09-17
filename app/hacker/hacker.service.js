@@ -71,6 +71,8 @@ class HackerService {
         ]
       }
     ]
+    // TODO remove
+    this.hackers = this.hackers.concat(this.hackers)
   }
 
   getHackers(language, location) {
