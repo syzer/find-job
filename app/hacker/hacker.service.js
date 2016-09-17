@@ -7,6 +7,18 @@ class HackerService {
     this.$q = $q
     this.firebaseService = firebaseService;
     // this is example data so we do not need to curl on every deploy
+    this.cities = [
+      {name: 'zurich', score: 1},
+      {name: 'basel', score: 1},
+    ]
+    this.languages = [
+      {name: 'javascipt', score: 0},
+      {name: 'python', score: 1},
+      {name: 'javascipt', score: 1},
+      {name: 'c#', score: 0},
+      {name: 'cpp', score: 1}
+    ]
+
     this.hackers = [
       {
         "login": "wolfv",
@@ -30,12 +42,10 @@ class HackerService {
         techScore: _.random(0, 100),
         socialScore: _.random(0, 100),
         labelsCity: [
-          {name: 'zurich', score: 1},
-          {name: 'basel', score: 1},
+
         ],
         labelsLanguage: [
-          {name: 'javascipt', score: 0},
-          {name: 'python', score: 1},
+
         ]
       },
       {
@@ -60,10 +70,7 @@ class HackerService {
         techScore: _.random(0, 100),
         socialScore: _.random(0, 100),
         labelsCity: [
-          {name: 'javascipt', score: 1},
-          {name: 'c#', score: 0},
-          {name: 'cpp', score: 1},
-          {name: 'python', score: 1},
+
           {name: 'zurich', score: 1}
         ],
         labelsLanguage: [
@@ -76,17 +83,36 @@ class HackerService {
     this.hackers = this.hackers.concat(this.hackers)
   }
 
-  getHackers(language, location) {
-    return this.hackers
-  }
 
   //  url: 'https://1ae3d400.ngrok.io/github'
   getGithubHackers(language = 'python', location = 'Zurich') {
     return this.firebaseService.getCached(`https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`)
       .then(data => {
-        return this.analyze(data)
+        return this.enrich(data)
       })
       .catch(console.warn)
+  }
+  
+  enrich(data) {
+    if (data.items) {
+      data.items.forEach(hacker => {
+        hacker.techScore = _.random(0, 100)
+        hacker.socialScore = _.random(0, 100)
+        let numLanguages = _.random(0, this.languages.length)
+        let tmpArray = []
+        for (let i = 0; i <numLanguages; i++) {
+          tmpArray.push(this.languages[_.random(1, this.languages.length)])
+        }
+        hacker.labelsLanguages = tmpArray;
+        tmpArray = []
+        let numCities = _.random(0, this.cities.length)
+        for (let i = 0; i < numCities; i++) {
+          tmpArray.push(this.cities[_.random(1, this.cities.length)])
+        }
+        hacker.labelsCity = tmpArray
+      })
+    }
+    return data;
   }
 
 }

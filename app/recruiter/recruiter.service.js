@@ -13,7 +13,7 @@ class RecruiterService {
   }
 
   getHackers(language, city) {
-    return this.hackerService.getHackers(language, city)
+    return this.hackerService.getGithubHackers(language, city)
   }
 
   registerRecruiter(recruiter) {
