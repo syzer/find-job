@@ -1,11 +1,10 @@
 //TODO
 class RecruterService {
 
-  constructor($http, $q, hackerService) {
+  constructor($http, $q) {
+    console.log('recruterService')
     this.$http = $http
     this.$q = $q
-    this.hackerService = hackerService
-
     this.hackers = []
     const deffered = this.$q.defer()
     this.initPromise = deffered.promise
@@ -13,29 +12,29 @@ class RecruterService {
   }
 
   getHackers(language, city) {
-    return this.hackerService.getHackers(language, city);
+    return this.hackerService.getHackers(language, city)
   }
 
   registerRecruter(recruter) {
-    const newKey = firebase.database().ref().child('hacker').push().key;
+    const newKey = firebase.database().ref().child('hacker').push().key
     this.ref.set({
       headline: recruter.title,
       description: recruter.description,
       img: recruter.link,
       city: recruter.city,
       country: recruter.country
-    });
+    })
   }
 
   notifyListeners() {
-    this.listeners.forEach(listener => listener());
+    this.listeners.forEach(listener => listener())
   }
 
   addListener(listener) {
-    this.listeners.push(listener);
+    this.listeners.push(listener)
   }
 }
 
-RecruterService.$inject = ['$http', '$q', 'hackerService']
+RecruterService.$inject = ['$http', '$q']
 
 export default RecruterService

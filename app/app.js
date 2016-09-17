@@ -8,7 +8,6 @@ import ngMaterial from 'angular-material'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import rootComponent from './root'
-import MessageService from './messages/messages.service.js'
 import recruterComponent from './recruter/recruter.component.js'
 import HackerService from './hacker/hacker.service.js'
 import RecruterService from './recruter/recruter.service.js'

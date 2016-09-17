@@ -9,10 +9,11 @@ class RootController {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
     this.recruterService = recruterService
+    console.log('root controller')
   }
 
-  
   loginToGithub() {
+    console.log('awesome')
     this.provider = new firebase.auth.GithubAuthProvider();
 
     firebase.auth().signInWithPopup(provider).then(function (result) {
