@@ -12,7 +12,7 @@ import rootComponent from './root'
 import MessageService from './messages/messages.service.js'
 import recruterComponent from './recruter/recruter.component.js'
 import RecruterService from './recruter/recruter.service.js'
-import HackerService from './hacker/hackers.service.js'
+import HackerService from './hacker/hacker.service.js'
 
 require('angular-material/angular-material.css')
 
