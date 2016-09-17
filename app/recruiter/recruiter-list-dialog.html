@@ -1,0 +1,101 @@
+  <md-dialog id="test" aria-label="Mango (Fruit)">
+    <form ng-cloak>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>{{ login }}</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="/img/icons/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+
+      <md-dialog-content>
+        <div class="md-dialog-content">
+
+
+          <div layout-gt-xs="row">
+            <div flex="40">
+              <img src="{{ avatar_url }}" alt="{{ login }}">
+            </div>
+            <div flex-gt-xs>
+              <md-list>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Username</label>
+                    <strong>{{ login }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Name</label>
+                    <strong>{{ name }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Company</label>
+                    <strong>{{ company }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Hireable</label>
+                    <strong>{{ hireable }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Blog</label>
+                    <strong>{{ blog }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Location</label>
+                    <strong><a href="http://maps.google.com/?q={{ location }}" target="_blank">{{ location }}</a></strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Email</label>
+                    <strong>{{ email }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Bio</label>
+                    <strong>{{ bio }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Repos</label>
+                    <strong>{{ public_repos }}</strong>
+                  </div>
+                </md-list-item>
+                <md-list-item>
+                  <div class="md-list-item-text" layout="column">
+                    <label>Followers</label>
+                    <strong>{{ followers }}</strong>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </div>
+
+          </div>
+
+        </div>
+      </md-dialog-content>
+
+      <md-dialog-actions layout="row">
+        <md-button href="{{ html_url }}" target="_blank" md-autofocus>
+          See on Github
+        </md-button>
+        <span flex></span>
+        <md-button ng-click="close()">
+          Close
+        </md-button>
+      </md-dialog-actions>
+    </form>
+  </md-dialog>
