@@ -27,7 +27,10 @@
     "angular-resource": "^1.5.8",
     "angular-sanitize": "^1.5.8",
     "angular-socket-io": "^0.7.0",
-    "material-design-icons-iconfont": "^3.0.0"
+    "fs": "0.0.1-security",
+    "level": "^1.4.0",
+    "material-design-icons-iconfont": "^3.0.0",
+    "syzer-level-naive-bayes": "^1.2.2"
   },
   "devDependencies": {
     "angular-aria": "^1.5.8",

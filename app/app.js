@@ -8,10 +8,10 @@ import ngMaterial from 'angular-material';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 import rootComponent from './root';
-import messagesComponent from './messages/messages.component';
-import MessageService from './messages/messages.service';
-import rumorComponent from './rumors/rumors.component';
-import RumorService from './rumors/rumors.service';
+import messagesComponent from './messages/messages.component.js';
+import MessageService from './messages/messages.service.js';
+import rumorComponent from './rumors/rumors.component.js';
+import RumorService from './rumors/rumors.service.js';
 
 require('angular-material/angular-material.css');
 
