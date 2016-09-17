@@ -1,7 +1,7 @@
 import './root.css'
-import RecruterCreateController from './recruter/recruter-create.controller'
+import RecruterCreateController from './recruiter/recruiter-create.controller'
 const template = require('./root.html')
-const dialogTemplate = require('./recruter/recruter-create.html')
+const dialogTemplate = require('./recruiter/recruiter-create.html')
 
 class RootController {
 
@@ -13,9 +13,8 @@ class RootController {
     this.searchTerm = ''
   }
 
-
   loginToGithub() {
-    console.log('awesome')
+    console.log('login github')
     this.provider = new firebase.auth.GithubAuthProvider();
 
     firebase.auth().signInWithPopup(this.provider).then(function (result) {

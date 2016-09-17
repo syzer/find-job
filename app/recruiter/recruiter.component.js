@@ -1,8 +1,8 @@
-const template = require('./recruter.html')
+const template = require('./recruiter.html')
 import './recruter.css'
 
 //TODO load hackrService data => store in db ..itp
-class RecruterController {
+class RecruiterController {
 
   constructor($mdSidenav, recruterService) {
     this.$mdSidenav = $mdSidenav
@@ -29,10 +29,10 @@ class RecruterController {
 
 }
 
-RecruterController.$inject = ['$mdSidenav', 'recruterService']
+RecruiterController.$inject = ['$mdSidenav', 'recruterService']
 
-const recruterComponent = {
-  controller: RecruterController,
+const recruiterComponent = {
+  controller: RecruiterController,
   template
 }
-export default recruterComponent
+export default recruiterComponent

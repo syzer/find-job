@@ -8,16 +8,16 @@ import ngMaterial from 'angular-material'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import rootComponent from './root'
-import recruterComponent from './recruter/recruter.component.js'
+import recruiterComponent from './recruiter/recruiter.component.js'
 import HackerService from './hacker/hacker.service.js'
-import RecruiterService from './recruter/recruter.service.js'
+import RecruiterService from './recruiter/recruiter.service.js'
 
 require('angular-material/angular-material.css')
 
 angular.module('findJob', [
   ngCookies, ngResource, ngSanitize, ngAnimate, ngMaterial, ngMessages
 ]).component('root', rootComponent)
-  .component('recruter', recruterComponent)
+  .component('recruiter', recruiterComponent)
   .service('recruiterService', RecruiterService)
   .service('hackerService', HackerService)
 
