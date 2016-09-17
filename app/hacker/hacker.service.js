@@ -28,11 +28,13 @@ class HackerService {
         "score": 1,
         techScore: _.random(0, 100),
         socialScore: _.random(0, 100),
-        labels: [
+        labelsCity: [
+          {name: 'zurich', score: 1},
+          {name: 'basel', score: 1},
+        ],
+        labelsLanguage: [
           {name: 'javascipt', score: 0},
           {name: 'python', score: 1},
-          {city: 'zurich', score: 1},
-          {city: 'basel', score: 1},
         ]
       },
       {
@@ -56,14 +58,16 @@ class HackerService {
         "score": 1,
         techScore: _.random(0, 100),
         socialScore: _.random(0, 100),
-        labels: [
+        labelsCity: [
           {name: 'javascipt', score: 1},
           {name: 'c#', score: 0},
           {name: 'cpp', score: 1},
           {name: 'python', score: 1},
-          {city: 'zurich', score: 1},
-          {city: 'basel', score: 0},
-          {city: 'bern', score: 0},
+          {name: 'zurich', score: 1}
+        ],
+        labelsLanguage: [
+          {name: 'basel', score: 0},
+          {name: 'bern', score: 0},
         ]
       }
     ]
