@@ -1,4 +1,4 @@
-class HackersService {
+class HackerService {
 
   constructor($http, $q) {
     this.$http = $http
@@ -12,12 +12,21 @@ class HackersService {
       method: 'GET',
       url: `https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`
     }).then(httpData => httpData.data)
+      .then(data => {
+        return this.analyse(data)
+      })
       .catch(console.warn)
   }
+
+  analyseData(data) {
+    console.log('working')
+    return data
+  }
+
 }
 
-HackersService.$inject = ['$http', '$q']
+HackerService.$inject = ['$http', '$q']
 
-export default HackersService
+export default HackerService
 
 
