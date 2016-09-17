@@ -8,8 +8,8 @@ class RecruiterController {
     this.$mdSidenav = $mdSidenav
     this.recruiterService = recruiterService
     this.label = "I am a label"
-    console.log('recruter controller')
-    this.getHackers = recruterService.getHackers
+    console.log('recruiter controller')
+    this.getHackers = recruiterService.getHackers
   }
 
   //SIDE bar?
