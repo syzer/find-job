@@ -16,10 +16,11 @@ require('angular-material/angular-material.css')
 
 angular.module('findJob', [
   ngCookies, ngResource, ngSanitize, ngAnimate, ngMaterial, ngMessages
-]).component('root', rootComponent)
-  .component('recruiter', recruiterComponent)
+])
   .service('recruiterService', RecruiterService)
   .service('hackerService', HackerService)
+  .component('root', rootComponent)
+  .component('recruiter', recruiterComponent)
 
 angular.element(document)
   .ready(() => {

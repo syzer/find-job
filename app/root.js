@@ -1,5 +1,5 @@
 import './root.css'
-import RecruterCreateController from './recruiter/recruiter-create.controller'
+import RecruiterCreateController from './recruiter/recruiter-create.controller'
 const template = require('./root.html')
 const dialogTemplate = require('./recruiter/recruiter-create.html')
 
@@ -8,7 +8,7 @@ class RootController {
   constructor($mdSidenav, $mdDialog, recruiterService, hackerService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
-    this.recruterService = recruiterService
+    this.recruiterService = recruiterService
     this.hackerService = hackerService
     this.searchTerm = ''
   }
@@ -49,11 +49,11 @@ class RootController {
   openCreateDialog(evt) {
     this.$mdDialog.show({
       template: dialogTemplate,
-      controller: RecruterCreateController,
+      controller: RecruiterCreateController,
       controllerAs: '$ctrl',
       targetEvent: evt
-    }).then(recruter => {
-      this.recruterService.registerRecruter(recruter)
+    }).then(recruiter => {
+      this.recruiterService.registerRecruiter(recruiter)
     })
   }
 }

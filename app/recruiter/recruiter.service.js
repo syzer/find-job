@@ -2,28 +2,28 @@
 class RecruiterService {
 
   constructor($http, $q, hackerService) {
-    console.log('recruterService')
+    console.log('recruiterService')
     this.$http = $http
     this.$q = $q
     this.hackers = []
     const deffered = this.$q.defer()
     this.hackerService = hackerService
     this.initPromise = deffered.promise
-    this.ref = firebase.database().ref('recruter')
+    this.ref = firebase.database().ref('recruiter')
   }
 
   getHackers(language, city) {
     return this.hackerService.getHackers(language, city)
   }
 
-  registerRecruter(recruter) {
+  registerRecruiter(recruiter) {
     const newKey = firebase.database().ref().child('hacker').push().key
     this.ref.set({
-      headline: recruter.title,
-      description: recruter.description,
-      img: recruter.link,
-      city: recruter.city,
-      country: recruter.country
+      headline: recruiter.title,
+      description: recruiter.description,
+      img: recruiter.link,
+      city: recruiter.city,
+      country: recruiter.country
     })
   }
 
