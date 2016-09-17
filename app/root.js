@@ -21,9 +21,16 @@ class RootController {
     return true
   }
 
-  loginToGithub() {
+  loginToGithub(role) {
     console.log('login github')
     this.firebaseService.getGithubToken()
+      .then(result => {
+        if (role === "hacker") {
+          this.hackerLogged = true;
+        } else {
+          this.recruiterLogged = true;
+        }
+      })
 
     //TODO
   }

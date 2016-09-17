@@ -1,24 +1,29 @@
 class FirebaseService {
 
-
-
   constructor($http, $q) {
     this.$http = $http
     this.$q = $q
   }
 
   getGithubToken() {
-    if (!this.githubAccessToken) {
+    let defered = this.$q.defer();
+    if (!this.githubAccess) {
       this.provider = new firebase.auth.GithubAuthProvider();
       firebase.auth().signInWithPopup(this.provider)
         .then(result => {
-          this.githubAccessToken = result.credential.accessToken;
-          this.user = result.user
+          // result.credential.accessToken;
+          // result.user
+          this.githubAccess = result
+          defered.resolve(this.githubAccess)
         })
         .catch(error => {
           console.log(`Error logging in: ${error.message} [${error.code}], ${error.email}, ${error.credential}`)
+          defered.reject(error)
         })
+    } else {
+      defered.resolve(this.githubAccess);
     }
+    return defered.promise;
   }
 
   getCached(url) {
