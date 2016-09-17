@@ -4,21 +4,15 @@ import './recruter.css'
 //TODO load hackrService data => store in db ..itp
 class RecruterController {
 
-  constructor(recruterService, $mdSidenav) {
-    this.recruterService = recruterService
+  constructor($mdSidenav, recruterService) {
     this.$mdSidenav = $mdSidenav
+    this.recruterService = recruterService
+    console.log('recruter controller')
 
     // this.recruterService.addListener(() => {
-      // this.onNewRumors()
+    // this.onNewRumors()
     // })
   }
-
-  // sortRumors() {
-  //   this.rumors = this.rumors.sort((rumorA, rumorB) =>
-  //       (rumorB.upvotes - rumorB.downvotes) -
-  //       (rumorA.upvotes - rumorA.downvotes)
-  //   )
-  // }
 
   //SIDE bar?
   showChat() {
@@ -35,7 +29,7 @@ class RecruterController {
 
 }
 
-RecruterController.$inject = ['recruterService', '$mdSidenav']
+RecruterController.$inject = ['$mdSidenav', 'recruterService']
 
 const recruterComponent = {
   controller: RecruterController,
