@@ -23,17 +23,75 @@
 </script>
 <script src="/build/bundle.js"></script>
 
-<md-toolbar layout="row" class="md-toolbar-tools">
-  <h1>Find Jobs</h1>
-  <span flex></span>
-  <md-button class="md-icon-button" aria-label="More">
-    <md-icon md-svg-icon="img/icons/ic_more_vert_black_24px.svg"></md-icon>
-  </md-button>
-</md-toolbar>
+  <md-toolbar layout="row" class="md-toolbar-tools">
+    <h1>Find Jobs</h1>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="More">
+      <md-icon md-svg-icon="/img/icons/ic_more_vert_black_24px.svg"></md-icon>
+    </md-button>
+  </md-toolbar>
 
-<md-content layout="column" layout-align="center center">
-  <h1>Thank you for signin up.</h1>
-  <h2>Your future employer might be looking for you already!</h2>
-</md-content>
+  <md-content layout="column" layout-align="center center">
+
+  <!-- TODO: add twitter login step here -->
+
+  </md-content>
+
+
+  <!-- TODO: only show this after twitter login / cancel / skip -->
+  <md-content class="narrow-content" layout-padding>
+
+
+    <form name="hacker-form">
+
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>First name</label>
+          <input ng-model="hacker.firstname">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Last name</label>
+          <input ng-model="hacker.lastname">
+        </md-input-container>
+      </div>
+
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Email</label>
+          <input type="email" ng-model="hacker.email">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Phone</label>
+          <input type="tel" ng-model="hacker.phone">
+        </md-input-container>
+      </div>
+
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Current job</label>
+          <input ng-model="hacker.job">
+        </md-input-container>
+        <div flex-gt-xs>
+          <input id="fileInput" name="file" type="file" class="ng-hide" multiple>
+          <md-button id="uploadButton" class="md-raised"> Choose Files </md-button>
+        </div>
+      </div>
+
+      <div layout="row" layout-align="center">
+        <md-button class="md-raised md-primary" ng-click="">send</md-button>
+      </div>
+
+    </form>
+
+  </md-content>
+
+  <md-content layout="column" layout-align="center center">
+
+    <h1>Thanks for signing up.</h1>
+    <h2>Your future employer might already be looking at your profile right now!</h2>
+
+  </md-content>
 </body>
 </html>
