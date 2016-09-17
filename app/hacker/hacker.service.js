@@ -73,24 +73,20 @@ class HackerService {
       }
     ]
     // TODO remove
-    // this.hackers = this.hackers.concat(this.hackers)
+    this.hackers = this.hackers.concat(this.hackers)
   }
 
   getHackers(language, location) {
     return this.hackers
   }
 
+  //  url: 'https://1ae3d400.ngrok.io/github'
   getGithubHackers(language = 'python', location = 'Zurich') {
     return this.firebaseService.getCached(`https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`)
       .then(data => {
         return this.analyze(data)
       })
       .catch(console.warn)
-  }
-
-  analyze(data) {
-    console.log('analyze working')
-    return data
   }
 
 }
