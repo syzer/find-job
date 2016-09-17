@@ -7,10 +7,10 @@ class HackersService {
   }
 
   //TODO language, location params
-  getGithubHackers(language, location) {
+  getGithubHackers(language = 'python', location = 'Zurich') {
     return this.$http({
       method: 'GET',
-      url: 'https://api.github.com/search/users?q=location:zurich+language:python+type:user'
+      url: `https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`
     }).then(httpData => httpData.data)
       .catch(console.warn)
   }
