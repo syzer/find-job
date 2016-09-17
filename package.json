@@ -28,8 +28,10 @@
     "angular-sanitize": "^1.5.8",
     "angular-socket-io": "^0.7.0",
     "fs": "0.0.1-security",
+    "fullcontact": "^1.0.0",
     "lang-detector": "^1.0.6",
     "level": "^1.4.0",
+    "lodash": "^4.15.0",
     "material-design-icons-iconfont": "^3.0.0",
     "syzer-level-naive-bayes": "^1.2.2"
   },
