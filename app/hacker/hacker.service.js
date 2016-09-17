@@ -48,7 +48,7 @@ class HackerService {
     ]
   }
 
-  getHackers() {
+  getHackers(language, location) {
     return this.hackers
   }
 

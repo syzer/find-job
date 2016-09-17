@@ -8,10 +8,7 @@ class RecruiterController {
     this.$mdSidenav = $mdSidenav
     this.recruterService = recruterService
     console.log('recruter controller')
-
-    // this.recruterService.addListener(() => {
-    // this.onNewRumors()
-    // })
+    this.getHackers = recruterService.getHackers
   }
 
   //SIDE bar?
