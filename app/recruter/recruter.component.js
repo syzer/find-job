@@ -8,9 +8,9 @@ class RecruterController {
     this.recruterService = recruterService
     this.$mdSidenav = $mdSidenav
 
-    this.recruterService.addListener(() => {
+    // this.recruterService.addListener(() => {
       // this.onNewRumors()
-    })
+    // })
   }
 
   // sortRumors() {
@@ -25,8 +25,8 @@ class RecruterController {
     this.$mdSidenav('message-sidenav').toggle()
   }
 
-  onNewHackers() {
-    this.rumors = this.recruterService.getHackers()
+  onNewHacker() {
+    this.hackers = this.recruterService.getHackers()
     // this.sortRumors()
 
     //TODO preloader
