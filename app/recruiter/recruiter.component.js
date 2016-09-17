@@ -4,12 +4,13 @@ import './recruiter.css'
 //TODO load hackrService data => store in db ..itp
 class RecruiterController {
 
-  constructor($mdSidenav, recruiterService) {
+  constructor($mdSidenav, recruiterService, $scope) {
     this.$mdSidenav = $mdSidenav
     this.recruiterService = recruiterService
     this.label = "I am a label"
     console.log('recruiter controller')
     this.getHackers = recruiterService.getHackers
+    this.$scope = $scope
   }
 
   //SIDE bar?
@@ -28,19 +29,17 @@ class RecruiterController {
   search() {
     console.log("search")
     if (this.searchTerm) {
-      this.hackerTechScores = {}
-      this.hackerSocialScores = {}
       let city = this.searchTerm.match(/Zurich/) ? 'Zurich' : 'Basel'
       let language = this.searchTerm.match(/python/) ? 'python' : 'javascript'
-      
       this.recruiterService.getHackers(city, language)
         .then(data => {
           this.hackers = data.items
           this.hackers.forEach(hacker => {
             this.recruiterService.getTechScore(hacker.login)
               .then(result => {
-                this.hackerTechScores[hacker.login] = result
-              })
+                hacker.labelsLanguage = result.languages
+                hacker.techScore = result.techScore
+              }, this)
           })
         })
     }
@@ -48,7 +47,7 @@ class RecruiterController {
  
 }
 
-RecruiterController.$inject = ['$mdSidenav', 'recruiterService']
+RecruiterController.$inject = ['$mdSidenav', 'recruiterService', '$scope']
 
 const recruiterComponent = {
   controller: RecruiterController,

@@ -33,10 +33,10 @@
           </ul>
         </div>
         <div layout="row" layout-xs="column" class="list-scores">
-          <md-progress-circular ng-disabled="!vm.activated" md-diameter="40" ng-hide="$ctrl.hackerTechScores[user.login]"></md-progress-circular>
-          <div class="list-score list-score--tech" ng-show="$ctrl.hackerTechScores[user.login]">
+          <md-progress-circular ng-disabled="!vm.activated" md-diameter="40" ng-hide="user.techScore != undefined"></md-progress-circular>
+          <div class="list-score list-score--tech">
             <span class="list-score-title">tech</span>
-            {{ $ctrl.hackerTechScores[user.login] }}
+            {{ user.techScore | number:0}}
           </div>
           <div class="list-score list-score--social">
             <span class="list-score-title">social</span>

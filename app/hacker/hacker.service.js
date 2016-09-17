@@ -8,17 +8,7 @@ class HackerService {
     this.$http = $http
     this.$q = $q
     this.firebaseService = firebaseService;
-    this.cities = [
-      {name: 'zurich', score: 1},
-      {name: 'basel', score: 1},
-    ]
-    this.languages = [
-      {name: 'javascipt', score: 0},
-      {name: 'python', score: 1},
-      {name: 'javascipt', score: 1},
-      {name: 'c#', score: 0},
-      {name: 'cpp', score: 1}
-    ]
+
   }
 
 
@@ -26,20 +16,20 @@ class HackerService {
   getGithubHackers(language = 'python', location = 'Zurich') {
     return this.firebaseService.getCached(`https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`)
       .then(data => {
-        return this.enrich(data)
+        return data
       })
       .catch(console.warn)
   }
 
   getSocialScore(email) {
-    this.$http({
+    return this.$http({
       method: 'GET',
       url: backendUrl + `/social?email=${email}`
     }).then(httpData => httpData.data)
   }
 
   getTechScore(user) {
-    this.$http({
+    return this.$http({
       method: 'GET',
       url: backendUrl + `/tech/score?user=${user}`
     }).then(httpData => httpData.data)
