@@ -5,10 +5,10 @@ const dialogTemplate = require('./recruter/recruter-create.html')
 
 class RootController {
 
-  constructor($mdSidenav, $mdDialog, recruterCreateService) {
+  constructor($mdSidenav, $mdDialog, recruterService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
-    this.recruterCreateService = recruterCreateService
+    this.recruterService = recruterService
   }
 
   
@@ -31,7 +31,9 @@ class RootController {
       var credential = error.credential;
       // ...
     });
-  //TODO
+    //TODO
+  }
+
   openCreateDialog(evt) {
     this.$mdDialog.show({
       template: dialogTemplate,
@@ -44,7 +46,7 @@ class RootController {
   }
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService', 'recruterCreateService']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService']
 
 const rootComponent = {
   controller: RootController,
