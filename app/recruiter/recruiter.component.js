@@ -1,5 +1,5 @@
 const template = require('./recruiter.html')
-import './recruter.css'
+import './recruiter.css'
 
 //TODO load hackrService data => store in db ..itp
 class RecruiterController {
