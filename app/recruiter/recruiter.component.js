@@ -4,9 +4,10 @@ import './recruiter.css'
 //TODO load hackrService data => store in db ..itp
 class RecruiterController {
 
-  constructor($mdSidenav, recruterService) {
+  constructor($mdSidenav, recruiterService) {
     this.$mdSidenav = $mdSidenav
-    this.recruterService = recruterService
+    this.recruiterService = recruiterService
+    this.label = "I am a label"
     console.log('recruter controller')
     this.getHackers = recruterService.getHackers
   }
@@ -17,16 +18,23 @@ class RecruiterController {
   }
 
   onNewHacker() {
-    this.hackers = this.recruterService.getHackers()
+    this.hackers = this.recruiterService.getHackers()
     // this.sortRumors()
 
     //TODO preloader
     this.loadingHackers = false
   }
 
+  search() {
+    console.log("search")
+    if (this.searchTerm) {
+      this.hackers= this.recruiterService.getHackers(this.searchTerm)
+    }
+  }
+ 
 }
 
-RecruiterController.$inject = ['$mdSidenav', 'recruterService']
+RecruiterController.$inject = ['$mdSidenav', 'recruiterService']
 
 const recruiterComponent = {
   controller: RecruiterController,

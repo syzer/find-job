@@ -1,12 +1,13 @@
 //TODO
 class RecruiterService {
 
-  constructor($http, $q) {
+  constructor($http, $q, hackerService) {
     console.log('recruterService')
     this.$http = $http
     this.$q = $q
     this.hackers = []
     const deffered = this.$q.defer()
+    this.hackerService = hackerService
     this.initPromise = deffered.promise
     this.ref = firebase.database().ref('recruter')
   }
@@ -35,6 +36,6 @@ class RecruiterService {
   }
 }
 
-RecruiterService.$inject = ['$http', '$q']
+RecruiterService.$inject = ['$http', '$q', "hackerService"]
 
 export default RecruiterService
