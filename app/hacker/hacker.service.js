@@ -1,4 +1,4 @@
-class HackersService {
+class HackerService {
 
   constructor($http, $q) {
     this.$http = $http
@@ -25,8 +25,8 @@ class HackersService {
 
 }
 
-HackersService.$inject = ['$http', '$q']
+HackerService.$inject = ['$http', '$q']
 
-export default HackersService
+export default HackerService
 
 
