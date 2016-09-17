@@ -39,7 +39,7 @@
 
 
   <!-- TODO: only show this after twitter login / cancel / skip -->
-  <md-content class="narrow-content" layout-padding>
+  <md-content class="narrow-content" layout-padding ng-hide="showThankYou">
 
 
     <form name="hacker-form">
@@ -80,14 +80,14 @@
       </div>
 
       <div layout="row" layout-align="center">
-        <md-button class="md-raised md-primary" ng-click="">send</md-button>
+        <md-button class="md-raised md-primary" ng-click="showThankYou=true">send</md-button>
       </div>
 
     </form>
 
   </md-content>
 
-  <md-content layout="column" layout-align="center center">
+  <md-content layout="column" layout-align="center center" ng-show="showThankYou">
 
     <h1>Thanks for signing up.</h1>
     <h2>Your future employer might already be looking at your profile right now!</h2>

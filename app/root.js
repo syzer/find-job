@@ -5,13 +5,14 @@ const dialogTemplate = require('./recruiter/recruiter-create.html')
 
 class RootController {
 
-  constructor($mdSidenav, $mdDialog, recruiterService, hackerService, sentimentService, firebaseService) {
+  constructor($mdSidenav, $mdDialog, recruiterService, hackerService, sentimentService, firebaseService, $window) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
     this.recruiterService = recruiterService
     this.hackerService = hackerService
     this.sentimentService = sentimentService
     this.firebaseService = firebaseService
+    this.$window = $window
   }
 
 
@@ -21,6 +22,7 @@ class RootController {
       .then(result => {
         if (role === "hacker") {
           this.hackerLogged = true;
+          this.$window.location.href = '/hacker.html'
         } else {
           this.recruiterLogged = true;
         }
@@ -43,7 +45,7 @@ class RootController {
   }
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService', 'sentimentService', 'firebaseService']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService', 'sentimentService', 'firebaseService', '$window']
 
 const rootComponent = {
   controller: RootController,
