@@ -39,7 +39,12 @@ class RecruiterController {
               .then(result => {
                 hacker.labelsLanguage = result.languages
                 hacker.techScore = result.techScore
+                this.hackers.sort( (hacker1, hacker2) => hacker2.techScore - hacker1.techScore)
               }, this)
+            this.recruiterService.getSocialScore(hacker.login)
+              .then(result => {
+                hacker.socialScore = result.score
+              })
           })
         })
     }

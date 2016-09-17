@@ -21,18 +21,20 @@ class HackerService {
       .catch(console.warn)
   }
 
-  getSocialScore(email) {
-    return this.$http({
-      method: 'GET',
-      url: backendUrl + `/social?email=${email}`
-    }).then(httpData => httpData.data)
+  getSocialScore(user) {
+    return this.firebaseService.getCached(backendUrl + `/social?user=${user}`)
+      .then(data => {
+        return data
+      })
+      .catch(console.warn)
   }
 
   getTechScore(user) {
-    return this.$http({
-      method: 'GET',
-      url: backendUrl + `/tech/score?user=${user}`
-    }).then(httpData => httpData.data)
+    return this.firebaseService.getCached(backendUrl + `/tech/score?user=${user}`)
+      .then(data => {
+        return data
+      })
+      .catch(console.warn)
   }
   
   enrich(data) {
