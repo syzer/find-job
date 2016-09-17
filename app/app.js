@@ -8,9 +8,10 @@ import ngMaterial from 'angular-material'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import rootComponent from './root'
-import recruiterComponent from './recruiter/recruiter.component.js'
-import HackerService from './hacker/hacker.service.js'
-import RecruiterService from './recruiter/recruiter.service.js'
+import recruiterComponent from './recruiter/recruiter.component'
+import HackerService from './hacker/hacker.service'
+import SentimentService from './hacker/sentiment.service'
+import RecruiterService from './recruiter/recruiter.service'
 
 require('angular-material/angular-material.css')
 
@@ -19,6 +20,7 @@ angular.module('findJob', [
 ])
   .service('recruiterService', RecruiterService)
   .service('hackerService', HackerService)
+  .service('sentimentService', SentimentService)
   .component('root', rootComponent)
   .component('recruiter', recruiterComponent)
 

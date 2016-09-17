@@ -1,23 +1,23 @@
 import './root.css'
 import RecruiterCreateController from './recruiter/recruiter-create.controller'
-import SentimentService from './hacker/sentiment.service'
 const template = require('./root.html')
 const dialogTemplate = require('./recruiter/recruiter-create.html')
 
 class RootController {
 
-  constructor($mdSidenav, $mdDialog, recruiterService, hackerService) {
+  constructor($mdSidenav, $mdDialog, recruiterService, hackerService, sentimentService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
     this.recruiterService = recruiterService
     this.hackerService = hackerService
+    this.sentimentService = sentimentService
     this.searchTerm = ''
   }
 
   //TODO remove :)
   nope() {
     console.log('nope')
-    SentimentService.getSentiment('bla bla').then(console.log).catch(console.error)
+    sentimentService.getSentiment('bla bla').then(console.log).catch(console.error)
     return true
   }
 
