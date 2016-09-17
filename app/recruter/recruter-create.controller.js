@@ -14,7 +14,8 @@ const groupedCountries = countryData.reduce((prevVal, item) => {
 }, {})
 countryList = countryList.sort()
 
-class RumorCreatorController {
+class RecruterCreateController {
+
   constructor($mdDialog) {
     this.$mdDialog = $mdDialog
   }
@@ -42,6 +43,6 @@ class RumorCreatorController {
   }
 }
 
-RumorCreatorController.$inject = ['$mdDialog']
+RecruterCreateController.$inject = ['$mdDialog']
 
-export default RumorCreatorController
+export default RecruterCreateController

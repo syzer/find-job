@@ -1,31 +1,53 @@
 import './root.css'
-import RumorCreatorController from './rumors/rumor-creator.controller'
+import RecruterCreateController from './recruter/recruter-create.controller'
 const template = require('./root.html')
-const dialogTemplate = require('./rumors/rumor-creator.html')
+const dialogTemplate = require('./recruter/recruter-create.html')
 
 class RootController {
-  constructor($mdSidenav, $mdDialog, rumorService) {
+
+  constructor($mdSidenav, $mdDialog, recruterService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
-    this.rumorService = rumorService
+    this.recruterService = recruterService
+    console.log('root controller')
   }
 
-  onMessageClick() {
-    this.$mdSidenav('message-sidenav').open()
+  loginToGithub() {
+    console.log('awesome')
+    this.provider = new firebase.auth.GithubAuthProvider();
+
+    firebase.auth().signInWithPopup(provider).then(function (result) {
+      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+    //TODO
   }
 
   openCreateDialog(evt) {
     this.$mdDialog.show({
       template: dialogTemplate,
-      controller: RumorCreatorController,
+      controller: RecruterCreateController,
       controllerAs: '$ctrl',
       targetEvent: evt
-    }).then(rumor => {
-      this.rumorService.registerRumor(rumor);
+    }).then(recruter => {
+      this.recruterCreateService.registerRecruter(recruter)
     })
   }
 }
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'rumorService']
+
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService']
 
 const rootComponent = {
   controller: RootController,

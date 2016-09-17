@@ -8,24 +8,22 @@ import ngMaterial from 'angular-material'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import rootComponent from './root'
-import messagesComponent from './messages/messages.component.js'
-import MessageService from './messages/messages.service.js'
-import rumorComponent from './rumors/rumors.component.js'
-import RumorService from './rumors/rumors.service.js'
+import recruterComponent from './recruter/recruter.component.js'
+import HackerService from './hacker/hacker.service.js'
+import RecruterService from './recruter/recruter.service.js'
 
 require('angular-material/angular-material.css')
 
 angular.module('findJob', [
   ngCookies, ngResource, ngSanitize, ngAnimate, ngMaterial, ngMessages
 ]).component('root', rootComponent)
-    .component('messages', messagesComponent)
-    .component('rumors', rumorComponent)
-    .service('messageService', MessageService)
-    .service('rumorService', RumorService)
+  .component('recruter', recruterComponent)
+  .service('recruterService', RecruterService)
+  .service('hackerService', HackerService)
 
 angular.element(document)
-    .ready(() => {
-      angular.bootstrap(document, ['findJob'], {
-        strictDi: true
-      })
+  .ready(() => {
+    angular.bootstrap(document, ['findJob'], {
+      strictDi: true
     })
+  })
