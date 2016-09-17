@@ -5,7 +5,7 @@ console.log(fullcontactSearch("syzer3@gmail.com"));
 
 function fullcontactSearch(email) {
 
-  var fullcontact = require('fullcontact').createClient('ef9002ff700b7a');
+  var fullcontact = require('fullcontact').createClient('');
   fullcontact.person.email(email, function (err, data) {
     //console.log(data);
     return data;
