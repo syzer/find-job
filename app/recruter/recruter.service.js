@@ -1,4 +1,5 @@
-class RumorService {
+//TODO
+class RecruterService {
 
   constructor($http, $q) {
     this.$http = $http;
@@ -7,7 +8,7 @@ class RumorService {
     this.rumors = [];
     const deffered = this.$q.defer();
     this.initPromise = deffered.promise;
-    this.ref = firebase.database().ref('rumors');
+    this.ref = firebase.database().ref('recruter');
     // this.ref.on('value', (dataSnapshot) => {
     //   const rumors = [];
     //   dataSnapshot.forEach(child => {
@@ -48,5 +49,7 @@ class RumorService {
     this.listeners.push(listener);
   }
 }
-RumorService.$inject = ['$http', '$q'];
-export default RumorService;
+
+RecruterService.$inject = ['$http', '$q']
+
+export default RecruterService
