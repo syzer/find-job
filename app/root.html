@@ -1,37 +1,39 @@
-<div layout="row" flex>
-  <md-sidenav></md-sidenav>
-  <div layout="column" flex>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <md-button class="md-icon-button">
-          <md-icon class="material-icons">
-            menu
-          </md-icon>
-        </md-button>
-        <h2>
-          <span>Find jobs</span>
-        </h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="$ctrl.onMessageClick()">
-          <md-icon class="material-icons">
-            message
-          </md-icon>
-        </md-button>
+  <md-toolbar layout="row" class="md-toolbar-tools">
+    <h1>Find Jobs</h1>
+  </md-toolbar>
+
+  <md-content layout-padding>
+
+    <form name="searchForm">
+
+      <md-input-container class="md-block" flex-gt-xs>
+        <label>search for skill, language, location etc.</label>
+        <input ng-model="searchTerm">
+      </md-input-container>
+
+      <div layout="row" layout-align="center">
+        <md-button class="md-raised md-primary">Primary</md-button>
       </div>
-    </md-toolbar>
-    <md-content flex layout="row" style="position: relative;">
-      <rumors flex layout="row"></rumors>
-      <div id="fab-container">
-        <md-button class="md-fab" ng-click="$ctrl.openCreateDialog($event)">
-          <md-icon class="material-icons">
-            add
-          </md-icon>
-        </md-button>
-      </div>
-    </md-content>
-  </div>
-  <md-sidenav md-component-id="message-sidenav" class="md-sidenav-right"
-              layout="row">
-    <messages layout="row" flex></messages>
-  </md-sidenav>
-</div>
+
+    </form>
+
+    <md-list>
+
+      <md-list flex>
+        <md-subheader class="md-no-sticky">Results</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="null">
+          <img ng-src="{{user.img}}" class="md-avatar" alt="{{user.name}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ user.name }}</h3>
+            <h4>{{ user.bio }}</h4>
+            <md-chips>
+              <md-chip ng-repeat="label in labels">{{ label }}</md-chip>
+            </md-chips>
+          </div>
+        </md-list-item>
+
+
+
+    </md-list>
+
+  </md-content>
