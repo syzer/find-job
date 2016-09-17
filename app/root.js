@@ -1,6 +1,6 @@
 import './root.css'
 import RecruiterCreateController from './recruiter/recruiter-create.controller'
-import classifyAsync from './hacker/getSentiment'
+import SentimentService from './hacker/sentiment.service'
 const template = require('./root.html')
 const dialogTemplate = require('./recruiter/recruiter-create.html')
 
@@ -17,7 +17,7 @@ class RootController {
   //TODO remove :)
   nope() {
     console.log('nope')
-    // classifyAsync('awesome hacker').then(console.warn)
+    SentimentService.getSentiment('bla bla').then(console.log).catch(console.error)
     return true
   }
 
