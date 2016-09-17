@@ -48,6 +48,10 @@ class HackerService {
     ]
   }
 
+  getHackers() {
+    return this.hackers
+  }
+
   getGithubHackers(language = 'python', location = 'Zurich') {
     return this.$http({
       method: 'GET',
