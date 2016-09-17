@@ -4,15 +4,16 @@
 
   <md-content layout-padding>
 
-    <form name="searchForm">
+    <form name="searchForm" ng-submit="$ctrl.search()">
 
       <md-input-container class="md-block" flex-gt-xs>
-        <label>search for skill, language, location etc.</label>
-        <input ng-model="searchTerm">
+        <label for="searchTerms">search for skill, language etc.</label>
+        <input id="searchTerms" ng-model="$ctrl.searchTerm">
       </md-input-container>
 
+
       <div layout="row" layout-align="center">
-        <md-button class="md-raised md-primary">Search</md-button>
+        <md-button class="md-raised md-primary" ng-click="$ctrl.search()">Search</md-button>
         or
         <md-button class="md-raised md-primary" ng-click="$ctrl.loginToGithub()">Login</md-button>
       </div>
@@ -22,11 +23,11 @@
 
       <md-list flex>
         <md-subheader class="md-no-sticky">Results</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="null">
-          <img ng-src="{{user.img}}" class="md-avatar" alt="{{user.name}}" />
+        <md-list-item class="md-3-line" ng-repeat="user in $ctrl.users" ng-click="null">
+          <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="{{user.login}}" />
           <div class="md-list-item-text" layout="column">
-            <h3>{{ user.name }}</h3>
-            <h4>{{ user.bio }}</h4>
+            <h3><a href="{{user.url}}">{{ user.login }}</a></h3>
+            <h4>score: {{ user.score }}</h4>
             <md-chips>
               <md-chip ng-repeat="label in labels">{{ label }}</md-chip>
             </md-chips>

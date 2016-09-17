@@ -5,12 +5,14 @@ const dialogTemplate = require('./recruter/recruter-create.html')
 
 class RootController {
 
-  constructor($mdSidenav, $mdDialog, recruterService) {
+  constructor($mdSidenav, $mdDialog, recruiterService, hackerService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
-    this.recruterService = recruterService
-    console.log('root controller')
+    this.recruterService = recruiterService
+    this.hackerService = hackerService
+    this.searchTerm = ''
   }
+  
 
   loginToGithub() {
     console.log('awesome')
@@ -37,6 +39,10 @@ class RootController {
     //TODO
   }
 
+  search() {
+    this.hackerService.getGithubHackers(this.searchTerm).then(data => this.users = data.items);
+  }
+
   openCreateDialog(evt) {
     this.$mdDialog.show({
       template: dialogTemplate,
@@ -49,7 +55,7 @@ class RootController {
   }
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService']
 
 const rootComponent = {
   controller: RootController,
