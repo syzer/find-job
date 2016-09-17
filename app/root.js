@@ -5,12 +5,13 @@ const dialogTemplate = require('./recruiter/recruiter-create.html')
 
 class RootController {
 
-  constructor($mdSidenav, $mdDialog, recruiterService, hackerService, sentimentService) {
+  constructor($mdSidenav, $mdDialog, recruiterService, hackerService, sentimentService, firebaseService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
     this.recruiterService = recruiterService
     this.hackerService = hackerService
     this.sentimentService = sentimentService
+    this.firebaseService = firebaseService
     this.searchTerm = ''
   }
 
@@ -22,26 +23,8 @@ class RootController {
 
   loginToGithub() {
     console.log('login github')
-    this.provider = new firebase.auth.GithubAuthProvider();
+    this.firebaseService.getGithubToken()
 
-    firebase.auth().signInWithPopup(this.provider).then(function (result) {
-      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-
-      console.log(result)
-      // ...
-    }).catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
     //TODO
   }
 
@@ -65,7 +48,7 @@ class RootController {
   }
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService', 'sentimentService']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService', 'sentimentService', 'firebaseService']
 
 const rootComponent = {
   controller: RootController,
