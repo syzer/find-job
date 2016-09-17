@@ -1,26 +1,29 @@
 import './root.css'
-import RecruterCreateController from './recruter/recruter-create.controller'
+import RecruterCreateController from './recruiter/recruiter-create.controller'
 const template = require('./root.html')
-const dialogTemplate = require('./recruter/recruter-create.html')
+const dialogTemplate = require('./recruiter/recruiter-create.html')
 
 class RootController {
 
-  constructor($mdSidenav, $mdDialog, recruterService) {
+  constructor($mdSidenav, $mdDialog, recruiterService, hackerService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
-    this.recruterService = recruterService
-    console.log('root controller')
+    this.recruterService = recruiterService
+    this.hackerService = hackerService
+    this.searchTerm = ''
   }
 
   loginToGithub() {
-    console.log('awesome')
+    console.log('login github')
     this.provider = new firebase.auth.GithubAuthProvider();
 
-    firebase.auth().signInWithPopup(provider).then(function (result) {
+    firebase.auth().signInWithPopup(this.provider).then(function (result) {
       // This gives you a GitHub Access Token. You can use it to access the GitHub API.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
+
+      console.log(result)
       // ...
     }).catch(function (error) {
       // Handle Errors here.
@@ -35,6 +38,14 @@ class RootController {
     //TODO
   }
 
+  search() {
+    let city = this.searchTerm.match(/Zurich/) ? 'Zurich' : 'Basel'
+    let language = this.searchTerm.match(/python/) ? 'python' : 'javascript'
+    this.hackerService
+      .getGithubHackers(language, city)
+      .then(data => this.users = data.items)
+  }
+
   openCreateDialog(evt) {
     this.$mdDialog.show({
       template: dialogTemplate,
@@ -42,12 +53,12 @@ class RootController {
       controllerAs: '$ctrl',
       targetEvent: evt
     }).then(recruter => {
-      this.recruterCreateService.registerRecruter(recruter)
+      this.recruterService.registerRecruter(recruter)
     })
   }
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService']
 
 const rootComponent = {
   controller: RootController,

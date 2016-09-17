@@ -14,7 +14,7 @@ const groupedCountries = countryData.reduce((prevVal, item) => {
 }, {})
 countryList = countryList.sort()
 
-class RecruterCreateController {
+class RecruiterCreateController {
 
   constructor($mdDialog) {
     this.$mdDialog = $mdDialog
@@ -43,6 +43,6 @@ class RecruterCreateController {
   }
 }
 
-RecruterCreateController.$inject = ['$mdDialog']
+RecruiterCreateController.$inject = ['$mdDialog']
 
-export default RecruterCreateController
+export default RecruiterCreateController

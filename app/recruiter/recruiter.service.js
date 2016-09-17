@@ -1,5 +1,5 @@
 //TODO
-class RecruterService {
+class RecruiterService {
 
   constructor($http, $q) {
     console.log('recruterService')
@@ -35,6 +35,6 @@ class RecruterService {
   }
 }
 
-RecruterService.$inject = ['$http', '$q']
+RecruiterService.$inject = ['$http', '$q']
 
-export default RecruterService
+export default RecruiterService

@@ -1,17 +1,14 @@
-const template = require('./recruter.html')
-import './recruter.css'
+const template = require('./recruiter.html')
+import './recruiter.css'
 
 //TODO load hackrService data => store in db ..itp
-class RecruterController {
+class RecruiterController {
 
   constructor($mdSidenav, recruterService) {
     this.$mdSidenav = $mdSidenav
     this.recruterService = recruterService
     console.log('recruter controller')
-
-    // this.recruterService.addListener(() => {
-    // this.onNewRumors()
-    // })
+    this.getHackers = recruterService.getHackers
   }
 
   //SIDE bar?
@@ -29,10 +26,10 @@ class RecruterController {
 
 }
 
-RecruterController.$inject = ['$mdSidenav', 'recruterService']
+RecruiterController.$inject = ['$mdSidenav', 'recruterService']
 
-const recruterComponent = {
-  controller: RecruterController,
+const recruiterComponent = {
+  controller: RecruiterController,
   template
 }
-export default recruterComponent
+export default recruiterComponent
