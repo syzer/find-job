@@ -3,11 +3,13 @@ class MessageService {
     this.$http = $http;
   }
 
+  //TODO
   getMessages() {
     return this.$http({
       method: 'GET',
       url: 'https://1ae3d400.ngrok.io/api/messages'
-    }).then(httpData => httpData.data);
+    }).then(httpData => httpData.data)
+      .catch(console.warn)
   }
 }
 MessageService.$inject = ['$http', '$q'];
