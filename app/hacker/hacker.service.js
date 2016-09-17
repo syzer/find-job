@@ -2,9 +2,10 @@ import _ from 'lodash'
 
 class HackerService {
 
-  constructor($http, $q) {
+  constructor($http, $q, firebaseService) {
     this.$http = $http
     this.$q = $q
+    this.firebaseService = firebaseService;
     // this is example data so we do not need to curl on every deploy
     this.hackers = [
       {
@@ -79,17 +80,18 @@ class HackerService {
     return this.hackers
   }
 
+  //  url: 'https://1ae3d400.ngrok.io/github'
   getGithubHackers(language = 'python', location = 'Zurich') {
-    return this.$http({
-      method: 'GET',
-      //TODO
-      url: 'https://1ae3d400.ngrok.io/github'
-    }).then(httpData => httpData.data).catch(console.warn)
+    return this.firebaseService.getCached(`https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`)
+      .then(data => {
+        return this.analyze(data)
+      })
+      .catch(console.warn)
   }
 
 }
 
-HackerService.$inject = ['$http', '$q']
+HackerService.$inject = ['$http', '$q', 'firebaseService']
 
 export default HackerService
 
