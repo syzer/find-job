@@ -1,0 +1,54 @@
+ <div flex layout="row" layout-wrap layout-align="start start">
+  <md-card ng-repeat="rumor in $ctrl.rumors track by $index" ng-hide="$ctrl.loadingRumors"
+           style="width: 400px">
+    <img ng-src="{{rumor.img}}" class="md-card-image"
+         style="width: 400px; height: 355px;">
+    <md-card-title
+        style="max-width: 100%;"
+        alt="{{rumor.headline}}">
+      <md-card-title-text style="max-width: 100%;">
+        <span class="md-headline"
+              style="max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis">
+          {{rumor.headline}}
+        </span>
+        <span class="md-subhead">
+          Upvotes: {{rumor.upvotes}}
+          Downvotes: {{rumor.downvotes}}
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="start center">
+      <md-card-icon-actions>
+        <md-button class="md-icon-button" ng-click="$ctrl.downvote(rumor)">
+          <md-icon class="material-icons" ng-class="{'icon-pressed': rumor.localState == 'downvoted'}">
+            thumb_down
+          </md-icon>
+        </md-button>
+        <md-button class="md-icon-button"
+                   ng-click="$ctrl.upvote(rumor)">
+          <md-icon class="material-icons" ng-class="{'icon-pressed': rumor.localState == 'upvoted'}">
+            thumb_up
+          </md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+          <md-icon class="material-icons">
+            share
+          </md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="$ctrl.showChat()">
+          <md-icon class="material-icons">
+            comment
+          </md-icon>
+        </md-button>
+      </md-card-icon-actions>
+    </md-card-actions>
+    <md-card-content layout="row" style="max-width: 100%; max-height: 120px; flex: 0 0 120px;">
+      <p style="overflow-y: auto; max-width: 100%;" flex>
+        {{rumor.description}}
+      </p>
+    </md-card-content>
+  </md-card>
+  <div ng-show="$ctrl.loadingRumors" style="margin: auto; align-self: center">
+    <md-progress-circular></md-progress-circular>
+  </div>
+</div>

@@ -1,31 +1,35 @@
 import './root.css'
-import RumorCreatorController from './rumors/rumor-creator.controller'
+import RecruterCreateController from './recruter/recruter-create.controller'
 const template = require('./root.html')
-const dialogTemplate = require('./rumors/rumor-creator.html')
+const dialogTemplate = require('./recruter/recruter-create.html')
 
 class RootController {
-  constructor($mdSidenav, $mdDialog, rumorService) {
+
+  constructor($mdSidenav, $mdDialog, recruterCreateService) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
-    this.rumorService = rumorService
+    this.recruterCreateService = recruterCreateService
   }
 
+  //TODO
   onMessageClick() {
     this.$mdSidenav('message-sidenav').open()
   }
 
+  //TODO
   openCreateDialog(evt) {
     this.$mdDialog.show({
       template: dialogTemplate,
-      controller: RumorCreatorController,
+      controller: RecruterCreateController,
       controllerAs: '$ctrl',
       targetEvent: evt
-    }).then(rumor => {
-      this.rumorService.registerRumor(rumor);
+    }).then(recruter => {
+      this.recruterService.registerRecruter(recruter)
     })
   }
 }
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'rumorService']
+
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService', 'recruterCreate']
 
 const rootComponent = {
   controller: RootController,
