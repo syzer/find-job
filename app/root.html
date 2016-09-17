@@ -1,5 +1,5 @@
 
-<div layout="row" layout-xs="column" flex>
+<div layout="row" layout-xs="column" flex ng-hide="$ctrl.hackerLogged || $ctrl.recruiterLogged">
   <div flex layout="column" layout-align="space-between" class="hero-box hero-box--recruiter">
     <h2>Are you a recruiter?</h2>
     <div>
@@ -13,3 +13,5 @@
     </div>
   </div>
 </div>
+
+<recruiter ng-show="$ctrl.recruiterLogged"/>
