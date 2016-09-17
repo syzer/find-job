@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 class HackerService {
 
   constructor($http, $q) {
@@ -23,7 +25,15 @@ class HackerService {
         "received_events_url": "https://api.github.com/users/wolfv/received_events",
         "type": "User",
         "site_admin": false,
-        "score": 1
+        "score": 1,
+        techScore: _.random(0, 100),
+        socialScore: _.random(0, 100),
+        labels: [
+          {name: 'javascipt', score: 0},
+          {name: 'python', score: 1},
+          {city: 'zurich', score: 1},
+          {city: 'basel', score: 1},
+        ]
       },
       {
         "login": "kaskaderc",
@@ -43,7 +53,18 @@ class HackerService {
         "received_events_url": "https://api.github.com/users/kaskaderc/received_events",
         "type": "User",
         "site_admin": false,
-        "score": 1
+        "score": 1,
+        techScore: _.random(0, 100),
+        socialScore: _.random(0, 100),
+        labels: [
+          {name: 'javascipt', score: 1},
+          {name: 'c#', score: 0},
+          {name: 'cpp', score: 1},
+          {name: 'python', score: 1},
+          {city: 'zurich', score: 1},
+          {city: 'basel', score: 0},
+          {city: 'bern', score: 0},
+        ]
       }
     ]
   }
