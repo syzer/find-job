@@ -1,5 +1,5 @@
 /**
- * Created by giga on 17/09/16.
+ * Getting sentiment from a pre-trained Bayesian classifier.
  */
 var level = require('level');
 var bayes = require('syzer-level-naive-bayes');

@@ -1,5 +1,6 @@
 /**
- * Created by giga on 17/09/16.
+ * Training Bayesian classifier for sentiment analysis.
+ * Run one time only.
  */
 //console.log("test message")
 var level = require('level');
@@ -20,8 +21,11 @@ var lineReader = require('readline').createInterface({
 });
 
 lineReader.on('line', function (line) {
-    var tuple  = line.split('\t');
-    nb.train(tuple[0]=='1' ? 'positive':'negative', tuple[1]);
+    var tabIndex =  line.indexOf('\t');
+    var sentiment = line.substr(0,tabIndex)=='1' ? 'positive':'negative';
+    var sentence = line.substr(tabIndex+1);
+
+    nb.train(sentiment, sentence);
 });
 
 /*
