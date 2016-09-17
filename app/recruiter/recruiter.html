@@ -7,7 +7,7 @@
     </md-button>
   </md-toolbar>
 
-  <md-content layout-padding>
+  <md-content class="narrow-content" layout-padding>
 
     <form name="searchForm" ng-submit="$ctrl.search()">
 
@@ -21,20 +21,31 @@
       </div>
     </form>
 
-    <md-list>
-
-      <md-list flex>
-        <md-subheader class="md-no-sticky">Results</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="user in $ctrl.hackers" ng-click="null">
-          <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="{{user.login}}" />
-          <div class="md-list-item-text" layout="column">
-            <h3>{{ user.login }}</h3>
-            <h4>{{ user.score }}</h4>
-            <md-chips>
-              <md-chip ng-repeat="label in labels">{{ label }}</md-chip>
-            </md-chips>
+    <md-list class="hacker-list" ng-show="$ctrl.hackers" flex>
+      <md-subheader class="hacker-list-title md-no-sticky">Results</md-subheader>
+      <md-list-item class="hacker-list-item md-3-line " ng-repeat="user in $ctrl.hackers" ng-click="null">
+        <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="{{user.login}}" />
+        <div class="md-list-item-text" layout="column">
+          <h3 class="hacker-name">{{ user.login }}</h3>
+          <ul class="hacker-labels">
+            <li ng-repeat="label in user.labelsLanguage" class="hacker-label hacker-label--language hacker-label--score-{{ label.score }}">{{ label.name }}</li>
+            <li ng-repeat="label in user.labelsCity" class="hacker-label hacker-label--city hacker-label--score-{{ label.score }}">{{ label.name }}</li>
+          </ul>
+        </div>
+        <div layout="row" layout-xs="column" class="list-scores">
+          <div class="list-score list-score--tech">
+            <span class="list-score-title">tech</span>
+            {{ user.techScore }}
           </div>
-        </md-list-item>
+          <div class="list-score list-score--social">
+            <span class="list-score-title">social</span>
+            {{ user.socialScore }}
+          </div>
+        </div>
+        <div>
+          <md-icon md-svg-icon="img/icons/ic_keyboard_arrow_right_black_24px.svg"></md-icon>
+        </div>
+      </md-list-item>
 
     </md-list>
 
