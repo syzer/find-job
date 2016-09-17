@@ -34,15 +34,13 @@
         </div>
         <div layout="row" layout-xs="column" class="list-scores">
           <md-progress-circular ng-disabled="!vm.activated" md-diameter="40"></md-progress-circular>
-          <div>
-            <div class="list-score list-score--tech">
-              <span class="list-score-title">tech</span>
-              {{ user.techScore }}
-            </div>
-            <div class="list-score list-score--social">
-              <span class="list-score-title">social</span>
-              {{ user.socialScore }}
-            </div>
+          <div class="list-score list-score--tech">
+            <span class="list-score-title">tech</span>
+            {{ user.techScore }}
+          </div>
+          <div class="list-score list-score--social">
+            <span class="list-score-title">social</span>
+            {{ user.socialScore }}
           </div>
         </div>
         <div>
