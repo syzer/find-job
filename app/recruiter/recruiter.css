@@ -91,3 +91,8 @@
   font-weight: 700;
   display: block;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
