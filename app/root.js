@@ -24,12 +24,12 @@ class RootController {
       controllerAs: '$ctrl',
       targetEvent: evt
     }).then(recruter => {
-      this.recruterService.registerRecruter(recruter)
+      this.recruterCreateService.registerRecruter(recruter)
     })
   }
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService', 'recruterCreate']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruterService', 'recruterCreateService']
 
 const rootComponent = {
   controller: RootController,
