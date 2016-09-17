@@ -16,11 +16,13 @@ class RootController {
     console.log('awesome')
     this.provider = new firebase.auth.GithubAuthProvider();
 
-    firebase.auth().signInWithPopup(provider).then(function (result) {
+    firebase.auth().signInWithPopup(this.provider).then(function (result) {
       // This gives you a GitHub Access Token. You can use it to access the GitHub API.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
+
+      console.log(result)
       // ...
     }).catch(function (error) {
       // Handle Errors here.
@@ -42,7 +44,7 @@ class RootController {
       controllerAs: '$ctrl',
       targetEvent: evt
     }).then(recruter => {
-      this.recruterCreateService.registerRecruter(recruter)
+      this.recruterService.registerRecruter(recruter)
     })
   }
 }
