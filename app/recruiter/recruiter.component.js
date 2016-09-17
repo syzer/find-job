@@ -28,11 +28,21 @@ class RecruiterController {
   search() {
     console.log("search")
     if (this.searchTerm) {
+      this.hackerTechScores = {}
+      this.hackerSocialScores = {}
       let city = this.searchTerm.match(/Zurich/) ? 'Zurich' : 'Basel'
       let language = this.searchTerm.match(/python/) ? 'python' : 'javascript'
       
       this.recruiterService.getHackers(city, language)
-        .then(data => this.hackers = data.items)
+        .then(data => {
+          this.hackers = data.items
+          this.hackers.forEach(hacker => {
+            this.recruiterService.getTechScore(hacker.login)
+              .then(result => {
+                this.hackerTechScores[hacker.login] = result
+              })
+          })
+        })
     }
   }
  

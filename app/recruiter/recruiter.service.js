@@ -16,7 +16,15 @@ class RecruiterService {
     return this.hackerService.getGithubHackers(language, city)
   }
 
-  registerRecruiter(recruiter) {
+  getSocialScore(email) {
+    return this.hackerService.getSocialScore(email)
+  }
+
+  getTechScore(user) {
+    return this.hackerService.getTechScore(user)
+  }
+
+    registerRecruiter(recruiter) {
     const newKey = firebase.database().ref().child('hacker').push().key
     this.ref.set({
       headline: recruiter.title,

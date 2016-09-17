@@ -26,6 +26,10 @@ class FirebaseService {
     return defered.promise;
   }
 
+  getTwitterToken(uid) {
+
+  }
+
   getCached(url) {
     let key = btoa(url)
     let defered = this.$q.defer();

@@ -12,14 +12,8 @@ class RootController {
     this.hackerService = hackerService
     this.sentimentService = sentimentService
     this.firebaseService = firebaseService
-    this.searchTerm = ''
   }
 
-  //TODO remove :)
-  nope() {
-    console.log('nope')
-    return true
-  }
 
   loginToGithub(role) {
     console.log('login github')
@@ -30,18 +24,12 @@ class RootController {
         } else {
           this.recruiterLogged = true;
         }
+        this.user = result.user
       })
 
     //TODO
   }
 
-  search() {
-    let city = this.searchTerm.match(/Zurich/) ? 'Zurich' : 'Basel'
-    let language = this.searchTerm.match(/python/) ? 'python' : 'javascript'
-    this.hackerService
-      .getGithubHackers(language, city)
-      .then(data => this.users = data.items)
-  }
 
   openCreateDialog(evt) {
     this.$mdDialog.show({
