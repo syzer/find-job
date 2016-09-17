@@ -44,7 +44,7 @@ module.exports = {
         root: __dirname
     },
     devServer: {
-        contentBase: '.',
+        contentBase: './public',
         port: 3000
     }
 }
