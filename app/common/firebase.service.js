@@ -5,7 +5,6 @@ class FirebaseService {
   constructor($http, $q) {
     this.$http = $http
     this.$q = $q
-
   }
 
   getGithubToken() {
@@ -20,6 +19,27 @@ class FirebaseService {
           console.log(`Error logging in: ${error.message} [${error.code}], ${error.email}, ${error.credential}`)
         })
     }
+  }
+
+  getCached(url) {
+    let key = btoa(url)
+    let defered = this.$q.defer();
+    firebase.database().ref('cache/' + key).once('value')
+      .then(snapshot => {
+        if (!!snapshot.val()) {
+          return defered.resolve(snapshot.val().data);
+        } else {
+          this.$http({
+            method: 'GET',
+            url: url
+          }).then(httpData => {
+            firebase.database().ref('cache/' + key).set({data: httpData.data});
+            defered.resolve(httpData.data)
+          })
+        }
+      })
+
+    return defered.promise;
   }
 
 }
