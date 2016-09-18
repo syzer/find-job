@@ -4,7 +4,7 @@
         <div class="md-toolbar-tools">
           <h2>{{ login }}</h2>
           <span flex></span>
-          <md-button class="md-icon-button" ng-click="cancel()">
+          <md-button class="md-icon-button" ng-click="$ctrl.closeDialog()">
             <md-icon md-svg-src="/img/icons/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
           </md-button>
         </div>
@@ -16,68 +16,68 @@
 
           <div layout-gt-xs="row">
             <div flex="40">
-              <img src="{{ avatar_url }}" alt="{{ login }}">
+              <img src="{{ $ctrl.hacker.avatar_url }}" alt="{{ $ctrl.hacker.login }}">
             </div>
             <div flex-gt-xs>
               <md-list>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Username</label>
-                    <strong>{{ login }}</strong>
+                    <strong>{{ $ctrl.hacker.login }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Name</label>
-                    <strong>{{ name }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.name }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Company</label>
-                    <strong>{{ company }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.company }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Hireable</label>
-                    <strong>{{ hireable }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.hireable }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Blog</label>
-                    <strong>{{ blog }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.blog }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Location</label>
-                    <strong><a href="http://maps.google.com/?q={{ location }}" target="_blank">{{ location }}</a></strong>
+                    <strong><a href="http://maps.google.com/?q={{ $ctrl.hacker.profile.details.location }}" target="_blank">{{ $ctrl.hacker.profile.details.location }}</a></strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Email</label>
-                    <strong>{{ email }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.email }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Bio</label>
-                    <strong>{{ bio }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.bio }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Repos</label>
-                    <strong>{{ public_repos }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.public_repos }}</strong>
                   </div>
                 </md-list-item>
                 <md-list-item>
                   <div class="md-list-item-text" layout="column">
                     <label>Followers</label>
-                    <strong>{{ followers }}</strong>
+                    <strong>{{ $ctrl.hacker.profile.details.followers }}</strong>
                   </div>
                 </md-list-item>
               </md-list>
@@ -93,7 +93,7 @@
           See on Github
         </md-button>
         <span flex></span>
-        <md-button ng-click="close()">
+        <md-button ng-click="$ctrl.closeDialog()">
           Close
         </md-button>
       </md-dialog-actions>

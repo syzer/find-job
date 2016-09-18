@@ -1,11 +1,10 @@
 import './root.css'
 import RecruiterCreateController from './recruiter/recruiter-create.controller'
 const template = require('./root.html')
-const dialogTemplate = require('./recruiter/recruiter-create.html')
 
 class RootController {
 
-  constructor($mdSidenav, $mdDialog, recruiterService, hackerService, sentimentService, firebaseService, $window) {
+  constructor($mdSidenav, $mdDialog, recruiterService, hackerService, sentimentService, firebaseService, $window, $cookies) {
     this.$mdSidenav = $mdSidenav
     this.$mdDialog = $mdDialog
     this.recruiterService = recruiterService
@@ -13,6 +12,8 @@ class RootController {
     this.sentimentService = sentimentService
     this.firebaseService = firebaseService
     this.$window = $window
+    this.$cookies = $cookies
+    this.user = this.$cookies.get('user');
   }
 
 
@@ -27,6 +28,7 @@ class RootController {
           this.recruiterLogged = true;
         }
         this.user = result.user
+        this.$cookies.put('user', this.user)
       })
 
     //TODO
@@ -43,9 +45,11 @@ class RootController {
       this.recruiterService.registerRecruiter(recruiter)
     })
   }
+
+  
 }
 
-RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService', 'sentimentService', 'firebaseService', '$window']
+RootController.$inject = ['$mdSidenav', '$mdDialog', 'recruiterService', 'hackerService', 'sentimentService', 'firebaseService', '$window', '$cookies']
 
 const rootComponent = {
   controller: RootController,

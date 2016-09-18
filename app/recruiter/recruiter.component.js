@@ -1,16 +1,19 @@
 const template = require('./recruiter.html')
+const dialogTemplate = require('./recruiter-list-dialog.html')
+
+import ShowHackerController from './show-hacker.controller'
 import './recruiter.css'
 
 //TODO load hackrService data => store in db ..itp
 class RecruiterController {
 
-  constructor($mdSidenav, recruiterService, $scope) {
+  constructor($mdSidenav, recruiterService, $mdDialog) {
     this.$mdSidenav = $mdSidenav
     this.recruiterService = recruiterService
     this.label = "I am a label"
     console.log('recruiter controller')
     this.getHackers = recruiterService.getHackers
-    this.$scope = $scope
+    this.$mdDialog = $mdDialog
   }
 
   //SIDE bar?
@@ -44,15 +47,29 @@ class RecruiterController {
             this.recruiterService.getSocialScore(hacker.login)
               .then(result => {
                 hacker.socialScore = result.score
+                hacker.profile = result
               })
           })
         })
     }
   }
+
+  openHackerDialog(hacker, evt) {
+    console.log(hacker)
+    this.$mdDialog.show({
+      template: dialogTemplate,
+      locals: {
+        hacker: hacker
+      },
+      controller: ShowHackerController,
+      controllerAs: '$ctrl',
+      targetEvent: evt
+    })
+  }
  
 }
 
-RecruiterController.$inject = ['$mdSidenav', 'recruiterService', '$scope']
+RecruiterController.$inject = ['$mdSidenav', 'recruiterService', '$mdDialog']
 
 const recruiterComponent = {
   controller: RecruiterController,
