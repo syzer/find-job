@@ -13,8 +13,8 @@ class HackerService {
 
 
   //  url: 'https://1ae3d400.ngrok.io/github'
-  getGithubHackers(language = 'python', location = 'Zurich') {
-    return this.firebaseService.getCached(`https://api.github.com/search/users?q=location:${location}+language:${language}+type:user`)
+  getGithubHackers(query) {
+    return this.firebaseService.getCached(backendUrl + `/tech/search?query=${query}`)
       .then(data => {
         return data
       })

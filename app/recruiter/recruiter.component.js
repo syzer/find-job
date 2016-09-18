@@ -34,7 +34,7 @@ class RecruiterController {
     if (this.searchTerm) {
       let city = this.searchTerm.match(/Zurich/) ? 'Zurich' : 'Basel'
       let language = this.searchTerm.match(/python/) ? 'python' : 'javascript'
-      this.recruiterService.getHackers(city, language)
+      this.recruiterService.getHackers(this.searchTerm.toUpperCase())
         .then(data => {
           this.hackers = data.items
           this.hackers.forEach(hacker => {

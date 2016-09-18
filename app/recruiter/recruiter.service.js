@@ -12,8 +12,8 @@ class RecruiterService {
     this.ref = firebase.database().ref('recruiter')
   }
 
-  getHackers(language, city) {
-    return this.hackerService.getGithubHackers(language, city)
+  getHackers(query) {
+    return this.hackerService.getGithubHackers(query)
   }
 
   getSocialScore(email) {
