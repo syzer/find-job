@@ -1,5 +1,7 @@
 # Firebase Quickstarts for Javascript
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/syzer/find-job.svg)](https://greenkeeper.io/)
+
 
 # TODO
 
